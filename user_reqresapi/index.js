@@ -42,7 +42,8 @@ let displaydata1 = (d)=>{
     
     })
 }
-
+// calling function to fetch and display data of page 1 so the frontend dont look blank
+getdata('https://reqres.in/api/users?page=1')
 // calling function to fetch and display data on click event
 btn.addEventListener('click',function(){
     tbd.innerHTML=""
