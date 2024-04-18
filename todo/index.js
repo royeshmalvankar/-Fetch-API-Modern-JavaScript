@@ -21,7 +21,9 @@ let showdata = (data) => {
         p1.innerText =`Title:${element.title}`
         let p2 = document.createElement("p");
         p2.innerText = `Completed: ${element.completed}`
-        div.append(p,p1,p2)
+        let chck = document.createElement("input")
+        chck.type = "checkbox"
+        div.append(p,p1,p2,chck)
         root.append(div)
     })   
 }

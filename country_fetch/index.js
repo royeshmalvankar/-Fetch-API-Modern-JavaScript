@@ -23,6 +23,7 @@ let showdata = (data) => {
         p1.innerText = `Population: ${element.population}`
         let p2 = document.createElement("p")
         p2.innerText = `Rank: ${element.Rank}`
+        
         // appending values
         div.append(h2, p1, p2)
         root.append(div)
