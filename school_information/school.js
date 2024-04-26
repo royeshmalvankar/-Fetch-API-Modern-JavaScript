@@ -60,7 +60,7 @@ const school = {
 
   function addNewDept(school,dept) {
     let newDepartment = {[dept]:{teachers:2,students:50}}
-    console.log(newDepartment);
+    // console.log(newDepartment);
     const {departments} = school
     updatedDepartments = {...departments,...newDepartment}
     // // departments[dept] = {teachers:2,students:50}
