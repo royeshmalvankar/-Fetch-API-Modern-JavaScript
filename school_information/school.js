@@ -33,16 +33,13 @@ const school = {
   };
 
   function countCalculation(school) {
-    const {departments} = school
-    const {math,history} = departments
-    const {teachers} = math, {teachers:historyTeachers} = history
-    const {students} = math, {students:historyStudents} = history
+    const {departments:{math:{teachers:mathsTeachersCount,students:mathsStudentsCount},history:{teachers:historyTeachersCount,students:historyStudentsCount}}} = school
     
     let output ={
-        mathTeachersCount:teachers,
-        historyTeachersCount:historyTeachers,
-        mathStudentsCount:students,
-        historyStudentsCount:historyStudents
+        mathsTeachersCount,
+        historyTeachersCount,
+        mathsStudentsCount,
+        historyStudentsCount
     }
     return output
   }
@@ -50,16 +47,24 @@ const school = {
 
   function findTopStudent(school,sub) {
     const {students} = school
-    let output = students.sort((a,b)=> {return `${b.scores[sub]}` - `${a.scores[sub]}`
+    // let output = students.sort((a,b)=> {return `${b.scores[sub]}` - `${a.scores[sub]}`
+    // })
+    // return output[0]
+
+    const topstudent = students.reduce((prev,curr)=> {
+        return curr.scores[sub] > prev.scores[sub] ? curr : prev
     })
-    return output[0]
+    return topstudent 
   }
   console.log(findTopStudent(school,"maths"))
 
-  function addNewDept(school,...dept) {
+  function addNewDept(school,dept) {
+    let newDepartment = {[dept]:{teachers:2,students:50}}
+    console.log(newDepartment);
     const {departments} = school
-    departments[dept] = {teachers:2,students:50}
-    return school
+    updatedDepartments = {...departments,...newDepartment}
+    // // departments[dept] = {teachers:2,students:50}
+    return {...school,departments:updatedDepartments}
   }
   console.log(addNewDept(school,"art"))
 
